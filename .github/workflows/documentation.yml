@@ -5,6 +5,10 @@ on:
     branches:
       - docs-test
 
+concurrency:
+  group: documentation
+  cancel-in-progress: true
+
 jobs:
   phpdoc:
     runs-on: ubuntu-latest
@@ -20,4 +24,4 @@ jobs:
           git config user.email ""
           git add docs/
           git commit -m "Update phpdoc" || echo "No changes to commit"
-          git pushRequirements
+          git push
